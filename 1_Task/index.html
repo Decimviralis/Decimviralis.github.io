@@ -7,9 +7,7 @@
     <script type="text/javascript" src="jquery.min.js"></script>
     <script>
         const SIZE = 5;
-
         let changedInputs = new Map();
-
         function initInputs() {
             let table = $('#inputs');
             for (let i = 0; i < SIZE; i++) {
@@ -17,7 +15,7 @@
                 for (let j = 0; j < SIZE; j++) {
                     let cell = $('<td></td>');
                     $('<input type="text">')
-                        .attr('id', i + ':' + j )
+                        .attr('id', i + ':' + j)
                         .val('kekTestVal')
                         .appendTo(cell);
                     cell.appendTo(row);
@@ -25,40 +23,37 @@
                 row.appendTo(table);
             }
         }
-
         function mapToJson(changedInputs) {
-            return JSON.stringify([...changedInputs]);
+            let result = [];
+            changedInputs.forEach((value, key) => {
+               result.push({index: key, value: value});
+            });
+            return JSON.stringify(result);
         }
-
         function initListeners() {
             $('input').change(() => {
                 if (!changedInputs.get(event.target.id)) {
-                changedInputs.set(event.target.id, event.target.value);
-            }
-        });
-
-
+                    changedInputs.set(event.target.id, event.target.value);
+                }
+            });
             $('#send-button').click(() => {
                 $.ajax({
-                url: 'localhost',
-                type: 'POST',
-                data: changedInputs,
-                success: (response) => {
-                console.log('success, unreachable');
-				alert(changedInputs);
-        },
-            error: function( jqXhr, textStatus, errorThrown ) {
-                console.log('of course error');
-				console.log(changedInputs);
-            }
-        });
-        });
+                    url: 'localhost',
+                    type: 'POST',
+                    data: mapToJson(changedInputs),
+                    success: (response) => {
+                        console.log('success, unreachable');
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        console.log('of course error');
+                        console.log('sent request body: ' + mapToJson(changedInputs));
+                    }
+                });
+            });
         }
-
-
         $(document).ready(() => {
             initInputs();
-        initListeners();
+            initListeners();
         });
     </script>
 </head>
