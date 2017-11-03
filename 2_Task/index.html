@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 Admin Template</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">
+
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <!-- Milligram CSS minified -->
+    <link rel="stylesheet" href="css/milligram.min.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+</head>
+
+<body data-ng-app = "testApp">
+<div class="navbar">
+    <div class="row">
+        <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>
+        <div class="column column-40 col-search"><a href="#" class="search-btn fa fa-search"></a>
+            <input type="text" name="" value="" placeholder="Search..." />
+        </div>
+        <div class="column column-30">
+            <div class="user-section"><a href="#">
+                <img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+                <div class="username">
+                    <h4>Undefined</h4>
+                    <p>Administrator</p>
+                </div>
+            </a></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div id="sidebar" class="column">
+        <h5>Navigation</h5>
+        <ul>
+            <li><a href="#outside"><em class="fa fa-home"></em> First Controller </a></li>
+            <li><a href="#home"><em class="fa fa-bar-chart"></em> Second Controller </a></li>
+            <li><a href="#form"><em class="fa fa-bar-chart"></em> Work with Data Controller </a></li>
+        </ul>
+    </div>
+    <div></div>
+    <section id="main-content" class="column column-offset-20">
+        <div class="row grid-responsive">
+            <div class="column page-heading">
+                <div class="large-card">
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+<script src="js/app.js"></script>
+<script src="js/Controllers/FirstTestController.js"></script>
+<script src="js/Controllers/SecondTestController.js"></script>
+<script src="js/Controllers/FormController.js"></script>
+</body>
+</html>
